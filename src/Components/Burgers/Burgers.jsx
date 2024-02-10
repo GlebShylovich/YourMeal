@@ -4,7 +4,7 @@ import Modal from '../Modal/Modal';
 import { arrBurgerImg } from '../../picture';
 import './burgers.scss';
 
-export default function Burgers({burgersData, addBasket }) {
+export default function Burgers({burgersData, addBasket}) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [objModal, setObjModal] = useState({});
   const [arr, setArr] = useState(burgersData);

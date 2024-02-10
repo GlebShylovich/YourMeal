@@ -43,7 +43,7 @@ export default function HotDogs({ hotdogsData, addBasket }) {
                     ))
                 }
             </div>
-            {isOpenModal && <Modal closeModal={closeModal} content={objModal} />}
+            {isOpenModal && <Modal addBasket={addBasket} closeModal={closeModal} content={objModal} />}
         </div>
     )
 }

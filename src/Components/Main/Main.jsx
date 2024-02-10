@@ -14,7 +14,7 @@ import Sauces from '../Sauces/Sauces'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { tabArrImg } from '../../picture'
 
-export default function Main({ burgersData, hotdogsData, snacksData, shawarmaData, pizzasData, desertsData, saucesData, basket, addBasket, plusBasket, minusBasket }) {
+export default function Main({burgersData, hotdogsData, snacksData, shawarmaData, pizzasData, desertsData, saucesData, basket, addBasket, plusBasket, minusBasket }) {
     const [arr, setArr] = useState(tabData);
     useEffect(() => {
         addImageToTab();
@@ -28,7 +28,6 @@ export default function Main({ burgersData, hotdogsData, snacksData, shawarmaDat
             }
             return obj;
         });
-        console.log(newArrTab);
         setArr(newArrTab);
     }
 

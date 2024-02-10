@@ -9,11 +9,9 @@
                 "bun": "rye",
                 "meat": "beef",
                 "cheese": "cheddar",
-                "vegetables": [
-                    "tomato",
-                    "lettuce",
-                    "onion"
-                ],
+                "tomato": "tomato",
+                "lettuce": "lettuce",
+                "onion": "onion",
                 "sauce": "barbecue"
             },
             "desc": "A classic Rancher's Choice burger with savory beef, cheddar cheese, fresh vegetables, all nestled in a hearty rye bun, topped with flavorful barbecue sauce.",
@@ -28,11 +26,9 @@
                 "bun": "whole wheat",
                 "meat": "chicken",
                 "cheese": "gouda",
-                "vegetables": [
-                    "cucumber",
-                    "tomato",
-                    "red onion"
-                ],
+                "tomato": "tomato",
+                "cucumber": "cucumber",
+                "red onion": "red onion",
                 "sauce": "mustard-honey"
             },
             "desc": "Indulge in the Wheaty Chicken Bliss, featuring succulent chicken, gouda cheese, crisp vegetables, all embraced by a wholesome whole wheat bun, complemented with zesty mustard-honey sauce.",
@@ -47,11 +43,9 @@
                 "bun": "sesame",
                 "meat": "lamb",
                 "cheese": "feta",
-                "vegetables": [
-                    "bell pepper",
-                    "olives",
-                    "watercress"
-                ],
+                "bell pepper": "bell pepper",
+                "olives": "olives",
+                "watercress": "watercress",
                 "sauce": "tomato"
             },
             "desc": "Experience the Sesame Lamb Feast, a delectable combination of lamb, feta cheese, vibrant vegetables, all enclosed in a sesame bun, enriched with tangy tomato sauce.",
@@ -66,11 +60,9 @@
                 "bun": "potato",
                 "meat": "pork",
                 "cheese": "gouda",
-                "vegetables": [
-                    "cabbage",
-                    "tomato",
-                    "cucumber"
-                ],
+                "cabbage": "cabbage",
+                "tomato": "tomato",
+                "cucumber": "cucumber",
                 "sauce": "sour cream"
             },
             "desc": "Savor the Potato Pork Gala, featuring tender pork, gouda cheese, crisp vegetables, all embraced by a unique potato bun, enhanced with creamy sour cream sauce.",
@@ -85,11 +77,9 @@
                 "bun": "multigrain",
                 "meat": "duck",
                 "cheese": "brie",
-                "vegetables": [
-                    "arugula",
-                    "grilled pepper",
-                    "red onion"
-                ],
+                "arugula": "arugula",
+                "grilled pepper": "grilled pepper",
+                "red onion": "red onion",
                 "sauce": "honey-mustard"
             },
             "desc": "Indulge in the Multigrain Duck Elegance, featuring succulent duck, brie cheese, flavorful vegetables, all embraced by a multigrain bun, complemented with a luscious honey-mustard sauce.",
@@ -104,11 +94,9 @@
                 "bun": "prune-walnut",
                 "meat": "turkey",
                 "cheese": "gruyere",
-                "vegetables": [
-                    "avocado",
-                    "tomato",
-                    "mixed greens"
-                ],
+                "avocado": "avocado",
+                "tomato": "tomato",
+                "mixed greens": "mixed greens",
                 "sauce": "cipollini"
             },
             "desc": "Experience the Nutty Turkey Symphony, a harmonious blend of turkey, gruyere cheese, fresh vegetables, all enclosed in a unique prune-walnut bun, enriched with savory cipollini sauce.",
@@ -123,11 +111,9 @@
             "weight": 150,
             "ingredients": {
                 "sausage": "beef",
-                "toppings": [
-                    "mustard",
-                    "ketchup",
-                    "diced onions"
-                ],
+                "mustard": "mustard",
+                "ketchup": "ketchup",
+                "diced onions": "diced onions",
                 "bun": "soft"
             },
             "desc": "Indulge in the timeless Classic Frankfurter featuring a succulent beef sausage adorned with classic toppings like mustard, ketchup, and diced onions, all nestled in a soft bun.",
@@ -140,11 +126,9 @@
             "weight": 180,
             "ingredients": {
                 "sausage": "bratwurst",
-                "toppings": [
-                    "sauerkraut",
-                    "Dijon mustard",
-                    "caraway seeds"
-                ],
+                "sauerkraut": "sauerkraut",
+                "Dijon mustard": "Dijon mustard",
+                "caraway seeds": "caraway seeds",
                 "bun": "pretzel"
             },
             "desc": "Elevate your taste buds with the Gourmet Bratwurst Delight featuring a flavorful bratwurst sausage topped with sauerkraut, Dijon mustard, and caraway seeds, all embraced by a pretzel bun.",
@@ -157,11 +141,9 @@
             "weight": 160,
             "ingredients": {
                 "sausage": "spicy",
-                "toppings": [
-                    "chili",
-                    "cheddar cheese",
-                    "chopped green onions"
-                ],
+                "chili": "chili",
+                "cheddar cheese": "cheddar cheese",
+                "chopped green onions": "chopped green onions",
                 "bun": "sesame seed"
             },
             "desc": "Spice up your day with the Chili Cheese Dawg, a zesty sausage topped with chili, cheddar cheese, and chopped green onions, all enclosed in a sesame seed bun.",
@@ -174,12 +156,10 @@
             "weight": 170,
             "ingredients": {
                 "sausage": "savory",
-                "toppings": [
-                    "crispy bacon",
-                    "barbecue sauce",
-                    "ranch dressing",
-                    "shredded lettuce"
-                ],
+                "crispy bacon": "crispy bacon",
+                "barbecue sauce": "barbecue sauce",
+                "ranch dressing": "ranch dressing",
+                "shredded lettuce": "shredded lettuce",
                 "bun": "toasted"
             },
             "desc": "Savor the richness of the BBQ Bacon Ranch Dog, featuring a savory sausage topped with crispy bacon, barbecue sauce, ranch dressing, and shredded lettuce, all embraced by a toasted bun.",
@@ -192,13 +172,11 @@
             "weight": 150,
             "ingredients": {
                 "sausage": "zesty",
-                "toppings": [
-                    "grilled jalapeños",
-                    "diced tomatoes",
-                    "onions",
-                    "cilantro",
-                    "chipotle mayo"
-                ],
+                "grilled jalapeños": "grilled jalapeños",
+                "diced tomatoes": "diced tomatoes",
+                "onions": "onions",
+                "cilantro": "cilantro",
+                "chipotle mayo": "chipotle mayo",
                 "bun": "corn tortilla"
             },
             "desc": "Take a flavorful journey with the Mexican Street Dog, a zesty sausage adorned with grilled jalapeños, diced tomatoes, onions, cilantro, and chipotle mayo, all wrapped in a corn tortilla.",
@@ -211,12 +189,10 @@
             "weight": 200,
             "ingredients": {
                 "sausage": "tropical",
-                "toppings": [
-                    "grilled pineapple ring",
-                    "teriyaki glaze",
-                    "crispy bacon",
-                    "green onions"
-                ],
+                "grilled pineapple ring": "grilled pineapple ring",
+                "teriyaki glaze": "teriyaki glaze",
+                "crispy bacon": "crispy bacon",
+                "green onions": "green onions",
                 "bun": "Hawaiian roll"
             },
             "desc": "Transport your taste buds to a tropical paradise with the Hawaiian Luau Dog, featuring a tropical sausage topped with a grilled pineapple ring, teriyaki glaze, crispy bacon, and green onions, all on a Hawaiian roll.",

@@ -1,7 +1,7 @@
 
 import './modal.scss';
 
-export default function Modal({ closeModal, content, addBasket, plusBasket, minusBasket }) {
+export default function Modal({ closeModal, content, addBasket }) {
   console.log(content);
   return (
     <div className="modal-overlay" onClick={closeModal}>
@@ -21,7 +21,11 @@ export default function Modal({ closeModal, content, addBasket, plusBasket, minu
             <p className="modal__text-desc">{content.desc}</p>
             <div className="modal__text-ingredients">
               <div className="modal__text-ingredients-title">Ingredients:</div>
-              <p className="modal__text-content">{Object.values(content.ingredients)}</p>
+              <div className="modal__text-content">
+                {Object.values(content.ingredients).map((ingredient, index) => (
+                  <p key={index}>{ingredient}</p>
+                ))}
+              </div>
             </div>
             <p className="modal__text-weight">{content.weight}g, ccal {content.calories}</p>
           </div>
