@@ -2,7 +2,7 @@
   {
     "title": "Burgers",
     "path": "/",
-    "tab": "/img/tab-burger.png",
+    "img": "/img/tab-burger.png",
     "items": [
       {
         "id": 1,
@@ -105,7 +105,7 @@
   {
     "title": "Hot-Dogs",
     "path": "/hotdogs",
-    "tab": "/img/tab-hotdog.png",
+    "img": "/img/tab-hotdog.png",
     "items": [
       {
         "id": 7,
@@ -206,7 +206,7 @@
   {
     "title": "Snacks",
     "path": "/snacks",
-    "tab": "/img/tab-snack.png",
+    "img": "/img/tab-snack.png",
     "items": [
       {
         "id": 13,
@@ -288,7 +288,7 @@
   {
     "title": "Shawarmas",
     "path": "/shawarmas",
-    "tab": "/img/tab-shawarma.png",
+    "img": "/img/tab-shawarma.png",
     "items": [
       {
         "id": 19,
@@ -391,7 +391,7 @@
   {
     "title": "Pizzas",
     "path": "/pizzas",
-    "tab": "/img/tab-pizza.png",
+    "img": "/img/tab-pizza.png",
     "items": [
       {
         "id": 25,
@@ -489,7 +489,7 @@
   {
     "title": "Deserts",
     "path": "/deserts",
-    "tab": "/img/tab-desert.png",
+    "img": "/img/tab-desert.png",
     "items": [
       {
         "id": 31,
@@ -577,7 +577,7 @@
   {
     "title": "Sauces",
     "path": "/sauces",
-    "tab": "/img/tab-sauce.png",
+    "img": "/img/tab-sauce.png",
     "items": [
       {
         "id": 37,

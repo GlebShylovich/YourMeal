@@ -1,0 +1,20 @@
+@use "../styles/vars" as variables;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-family: variables.$family;
+  background: variables.$background;
+}
+
+[class*="__container"] {
+  max-width: 1290px;
+  margin: 0 auto;
+}

@@ -19,12 +19,12 @@ export default function Auth({ isRegistration, onSubmit }) {
 
   return (
     <form className="auth" onSubmit={handleSubmit}>
-      <h1 className="auth-title">
+      <h1 className="auth__title">
         {isRegistration ? "Registration" : "Login"}
       </h1>
       {isRegistration && (
         <input
-          className="auth-input"
+          className="auth__input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -33,7 +33,7 @@ export default function Auth({ isRegistration, onSubmit }) {
         />
       )}
       <input
-        className="auth-input"
+        className="auth__input"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -41,7 +41,7 @@ export default function Auth({ isRegistration, onSubmit }) {
         required
       />
       <input
-        className="auth-input"
+        className="auth__input"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -50,7 +50,7 @@ export default function Auth({ isRegistration, onSubmit }) {
       />
       {isRegistration && (
         <input
-          className="auth-input"
+          className="auth__input"
           type="password"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
@@ -58,7 +58,7 @@ export default function Auth({ isRegistration, onSubmit }) {
           required
         />
       )}
-      <button className="auth-button" type="submit">
+      <button className="auth__button" type="submit">
         {isRegistration ? "Register" : "Login"}
       </button>
       <Link to={isRegistration ? "/login" : "/registration"}>Go to {isRegistration ? "Login" : "Registration"}</Link>

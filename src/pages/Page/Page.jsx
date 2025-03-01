@@ -1,14 +1,11 @@
-import { getAuth, signOut } from "firebase/auth";
+import Nav from "../../components/Nav/Nav";
+import Main from "../../components/Main/Main";
 
-export default function Page() {
-  const auth = getAuth();
-  
+export default function Page({ data, title }) {
   return (
     <div className="page">
-      <h1>YourMeal</h1>
-      <button type="button" onClick={() => signOut(auth)}>
-        Sign Out
-      </button>
+      <Nav />
+      <Main data={data} title={title} />
     </div>
   );
 }
