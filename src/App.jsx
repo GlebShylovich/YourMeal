@@ -3,6 +3,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { getUserData } from "../services";
 import { setUser } from "./redux/reducers/userSlice";
+import { setBasket } from "./redux/reducers/basketSlice";
 import { getPaths } from "./common/paths";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import data from "../data.json";
@@ -31,6 +32,7 @@ export default function App() {
                 id: user.uid,
               })
             );
+            dispatch(setBasket(userData.basket));
           }
         } catch (error) {
           console.error(error);

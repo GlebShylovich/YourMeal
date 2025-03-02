@@ -3,7 +3,7 @@ const db = getDatabase();
 
 export function setUserData(data) {
   const { email, username, id } = data;
-  set(ref(db, `users/${id}`), {
+  return set(ref(db, `users/${id}`), {
     email,
     username,
     id,
@@ -21,4 +21,8 @@ export async function getUserData(id) {
     console.error(error);
     return null;
   }
+}
+
+export function setBasketData(data, id) {
+  return set(ref(db, `users/${id}/basket`), data);
 }

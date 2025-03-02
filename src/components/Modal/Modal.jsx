@@ -1,11 +1,18 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/reducers/basketSlice";
 import close from "/close.svg";
 import "./Modal.scss";
 
 export default function Modal({ data, closeModal }) {
   const { name, img, desc, ingredients, weight, calories, price } = data;
+  const dispatch = useDispatch();
   const [count, setCount] = useState(1);
-  
+
+  function handleClick() {
+    dispatch(addItem({ ...data, count }));
+  }
+
   return (
     <div className="modal__overlay">
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -36,7 +43,7 @@ export default function Modal({ data, closeModal }) {
           </div>
         </div>
         <div className="modal__controls">
-          <button className="modal__button">Add</button>
+          <button onClick={handleClick} className="modal__button">Add</button>
           <div className="modal__controls-info">
             <div className="modal__counter">
               <button onClick={() => count > 1 && setCount(count - 1)}>
