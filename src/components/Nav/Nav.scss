@@ -1,7 +1,12 @@
-.nav {
-  max-width: 1290px;
+.navigation {
   margin: 40px auto 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  &__container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

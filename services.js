@@ -1,15 +1,8 @@
 import { getDatabase, ref, set, get } from "firebase/database";
 const db = getDatabase();
 
-export function setUserData(data) {
-  const { email, username, id } = data;
-  return set(ref(db, `users/${id}`), {
-    email,
-    username,
-    id,
-    basket: "",
-    orders: ""
-  });
+export function setUserData(data, id, path = "") {
+  return set(ref(db, `users/${id}${path}`), data);
 }
 
 export async function getUserData(id) {
@@ -21,8 +14,4 @@ export async function getUserData(id) {
     console.error(error);
     return null;
   }
-}
-
-export function setBasketData(data, id) {
-  return set(ref(db, `users/${id}/basket`), data);
 }

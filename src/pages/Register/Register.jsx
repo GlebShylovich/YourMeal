@@ -10,7 +10,8 @@ export default function Register() {
   function handleRegister(email, password, username) {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async ({user}) => {
-        await setUserData({email, username, id: user.uid})
+        const userData = {email, username, id: user.uid, basket: "", orders: ""};
+        await setUserData(userData, user.uid);
         navigate("/");
       })
       .catch(console.error);

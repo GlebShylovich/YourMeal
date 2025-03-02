@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getUserData } from "../services";
 import { setUser } from "./redux/reducers/userSlice";
 import { setBasket } from "./redux/reducers/basketSlice";
+import { setOrders } from "./redux/reducers/orderSlice";
 import { getPaths } from "./common/paths";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import data from "../data.json";
@@ -33,6 +34,7 @@ export default function App() {
               })
             );
             dispatch(setBasket(userData.basket));
+            dispatch(setOrders(userData.orders));
           }
         } catch (error) {
           console.error(error);

@@ -7,9 +7,11 @@ export default function Nav() {
   const paths = useContext(GlobalContext);
   return (
     <nav className="navigation">
-      {paths.map((item, index) => (
-        <Tab key={index} data={item} />
-      ))}
+      <ul className="navigation__container">
+        {paths.map((item, index) => (
+          <Tab key={index} data={item} />
+        ))}
+      </ul>
     </nav>
   );
 }

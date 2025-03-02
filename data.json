@@ -87,7 +87,7 @@
       {
         "id": 6,
         "name": "Nutty Turkey Symphony",
-        "img": "/turkeyBurger.png",
+        "img": "/img/nuttyBurger.png",
         "price": 16.99,
         "weight": 190,
         "ingredients": {
@@ -241,7 +241,7 @@
       {
         "id": 15,
         "name": "Mozzarella Sticks",
-        "img": "/img/mozarellaSticksSnack.png",
+        "img": "/img/mozzarellaSticksSnack.png",
         "price": 7.99,
         "weight": 90,
         "ingredients": ["mozzarella cheese", "breadcrumbs", "marinara sauce"],

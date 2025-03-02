@@ -1,0 +1,24 @@
+@use "../../styles/vars.scss" as variables;
+
+.order-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  &:nth-child(odd) {
+    background-color: variables.$btnGray;
+  }
+  &:nth-child(1) {
+    border-radius: 0 0 12px 12px;
+  }
+  &:nth-child(10) {
+    border-radius: 12px 12px 0 0;
+  }
+  & p {
+    flex-basis: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
