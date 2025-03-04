@@ -1,12 +1,11 @@
-import { getDatabase, ref, set, get } from "firebase/database";
-const db = getDatabase();
+import { database, ref, set, get, query, equalTo, orderByChild } from "./firebase";
 
 export function setUserData(data, id, path = "") {
-  return set(ref(db, `users/${id}${path}`), data);
+  return set(ref(database, `users/${id}${path}`), data);
 }
 
 export async function getUserData(id) {
-  const userRef = ref(db, `users/${id}`);
+  const userRef = ref(database, `users/${id}`);
   try {
     const snapshot = await get(userRef);
     return snapshot.val();
@@ -14,4 +13,11 @@ export async function getUserData(id) {
     console.error(error);
     return null;
   }
+}
+
+export async function checkEmailExists(email) {
+  const usersRef = ref(database, "users");
+  const emailQuery = query(usersRef, orderByChild("email"), equalTo(email));
+  const snapshot = await get(emailQuery);
+  return snapshot.exists();
 }

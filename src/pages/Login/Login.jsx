@@ -1,6 +1,8 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Auth from "../../components/Auth/Auth";
+import image from "/img/pic.png";
+import "./Login.scss";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,8 +17,15 @@ export default function Login() {
   }
 
   return (
-    <div className="login">
-      <Auth isRegistration={false} onSubmit={handleLogin} />
+    <div className="login__overlay">
+      <div className="login">
+        <div className="login__image">
+          <img src={image} alt="auth image" />
+        </div>
+        <div className="login__form">
+          <Auth isRegistration={false} onSubmit={handleLogin} />
+        </div>
+      </div>
     </div>
   );
 }

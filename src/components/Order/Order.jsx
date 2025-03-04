@@ -4,7 +4,7 @@ import close from "/close.svg";
 import "./Order.scss";
 
 export default function Order({ closeOrder }) {
-  const orders = useSelector((state) => state.order.items);
+  const orders = useSelector((state) => state.order.items || []);
   return (
     <div className="order__overlay">
       <div className="order">

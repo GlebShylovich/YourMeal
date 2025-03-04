@@ -15,8 +15,8 @@ export default function Header() {
   const auth = getAuth();
   const navigate = useNavigate();
   const { email, username, id } = useSelector((state) => state.user);
-  const basket = useSelector((state) => state.basket.items);
-  const orders = useSelector((state) => state.order.items);
+  const basket = useSelector((state) => state.basket.items || []);
+  const orders = useSelector((state) => state.order.items || []);
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 

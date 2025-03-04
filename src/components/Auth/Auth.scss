@@ -1,0 +1,68 @@
+@use "../../styles/vars.scss" as variables;
+@use "../../styles/templates" as templates;
+
+.auth {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 10px;
+  &__title {
+    color: variables.$black;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  &__input {
+    width: 100%;
+    height: 40px;
+    background-color: variables.$white;
+    border: 2px solid variables.$btnGray;
+    border-radius: 12px;
+    font-family: variables.$family;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.33;
+    padding: 0 0 0 12px;
+    outline: none;
+    transition: 0.3s ease;
+    &::placeholder {
+      color: variables.$gray;
+    }
+    &:focus {
+      border: 2px solid variables.$orange;
+    }
+    &--error {
+      border: 2px solid variables.$error;
+      &::placeholder {
+        color: variables.$error;
+      }
+    }
+  }
+  &__button {
+    @include templates.btn(
+      variables.$orange,
+      variables.$white,
+      variables.$lightOrange,
+      variables.$white
+    );
+    margin-top: 10px;
+  }
+  &__redirect {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    & p {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    & a {
+      color: variables.$orange;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+  }
+}

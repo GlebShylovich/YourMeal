@@ -1,16 +1,43 @@
 import { useState } from "react";
+import { validateAuth } from "./validate";
+import { checkEmailExists } from "../../../services";
 import { Link } from "react-router-dom";
+import "./Auth.scss";
 
 export default function Auth({ isRegistration, onSubmit }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [authErrors, setAuthErrors] = useState({});
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    const errors = validateAuth(
+      isRegistration,
+      email,
+      setEmail,
+      username,
+      setUsername,
+      password,
+      setPassword,
+      passwordConfirm,
+      setPasswordConfirm
+    );
+    setAuthErrors(errors);
+
+    if (Object.keys(errors).length > 0) return;
+
     if (isRegistration) {
-      if (password !== passwordConfirm) return;
+      const isExist = await checkEmailExists(email);
+      if (isExist) {
+        setAuthErrors((prev) => ({
+          ...prev,
+          emailError: "Email is already in use",
+        }));
+        setEmail("");
+        return;
+      }
       onSubmit(email, password, username);
     } else {
       onSubmit(email, password);
@@ -24,44 +51,57 @@ export default function Auth({ isRegistration, onSubmit }) {
       </h1>
       {isRegistration && (
         <input
-          className="auth__input"
+          className={
+            authErrors.usernameError ? "auth__input auth__input--error" : "auth__input"
+          }
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
+          placeholder={authErrors.usernameError || "Username"}
           required
         />
       )}
       <input
-        className="auth__input"
+        className={authErrors.emailError ? "auth__input auth__input--error" : "auth__input"}
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
+        placeholder={authErrors.emailError || "Email"}
         required
       />
       <input
-        className="auth__input"
+        className={
+          authErrors.passwordError ? "auth__input auth__input--error" : "auth__input"
+        }
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
+        placeholder={authErrors.passwordError || "Password"}
         required
       />
       {isRegistration && (
         <input
-          className="auth__input"
+          className={
+            authErrors.passwordConfirmError
+              ? "auth__input auth__input--error"
+              : "auth__input"
+          }
           type="password"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
-          placeholder="Confirm password"
+          placeholder={authErrors.passwordConfirmError || "Confirm password"}
           required
         />
       )}
       <button className="auth__button" type="submit">
         {isRegistration ? "Register" : "Login"}
       </button>
-      <Link to={isRegistration ? "/login" : "/registration"}>Go to {isRegistration ? "Login" : "Registration"}</Link>
+      <div className="auth__redirect">
+        <p>{isRegistration ? "Already have an account?" : "No account?"}</p>
+        <Link to={isRegistration ? "/login" : "/registration"}>
+          {isRegistration ? "Login" : "Registration"}
+        </Link>
+      </div>
     </form>
   );
 }
