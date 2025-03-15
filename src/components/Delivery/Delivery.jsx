@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { emptyBasket } from "../../redux/reducers/basketSlice";
 import { addOrder } from "../../redux/reducers/orderSlice";
@@ -8,37 +8,28 @@ import "./Delivery.scss";
 
 export default function Delivery({ closeDelivery, total }) {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [number, setNumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [floor, setFloor] = useState("");
-  const [deliveryType, setDeliveryType] = useState("Delivery");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+  });
 
-  function handleDelivery(e) {
-    e.preventDefault();
-    if (
-      !username ||
-      !number ||
-      (deliveryType === "Delivery" && (!address || !floor))
-    ) {
-      return;
-    }
+  const deliveryType = watch("deliveryType", "Delivery");
+
+  const onSubmitHandler = (data) => {
     dispatch(
       addOrder({
-        deliveryType,
-        username,
-        number,
-        address,
-        floor,
+        ...data,
         date: Date.now(),
         total,
       })
     );
     dispatch(emptyBasket());
-    setTimeout(() => {
-      closeDelivery(false);
-    }, 2000);
-  }
+    setTimeout(() => closeDelivery(false), 2000);
+  };
 
   return (
     <div className="delivery__overlay">
@@ -52,57 +43,108 @@ export default function Delivery({ closeDelivery, total }) {
         <div className="delivery__image">
           <img src={donut} alt="donut" />
         </div>
-        <form onSubmit={handleDelivery} className="delivery__form">
+        <form
+          onSubmit={handleSubmit(onSubmitHandler)}
+          className="delivery__form"
+        >
           <div className="delivery__form-body">
             <h1 className="delivery__title">{deliveryType}</h1>
-            <input
-              className={!username && "delivery__input--error"}
-              type="text"
-              placeholder={!username ? "Enter username" : "Your name"}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              className={!number && "delivery__input--error"}
-              type="tel"
-              placeholder={!number ? "Enter your number" : "Your number"}
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-            <label>
+            <div className="delivery__input-wrapper">
+              <label
+                className={`delivery__label ${
+                  errors.username && "delivery__label--error"
+                }`}
+              >
+                {errors.username ? errors.username.message : "Name"}
+              </label>
+              <input
+                className={`delivery__input ${
+                  errors.username ? "delivery__input--error" : ""
+                }`}
+                type="text"
+                {...register("username", {
+                  required: "Username is required",
+                  maxLength: { value: 20, message: "Max length is 20" },
+                  minLength: { value: 3, message: "Min length is 3" },
+                })}
+              />
+            </div>
+            <div className="delivery__input-wrapper">
+              <label
+                className={`delivery__label ${
+                  errors.number && "delivery__label--error"
+                }`}
+              >
+                {errors.number ? errors.number.message : "Number"}
+              </label>
+              <input
+                className={`delivery__input ${
+                  errors.number ? "delivery__input--error" : ""
+                }`}
+                type="tel"
+                {...register("number", {
+                  required: "Number is required",
+                  pattern: { value: /^\d{10,15}$/, message: "Invalid number" },
+                })}
+              />
+            </div>
+
+            <label htmlFor="deliveryType">
               <input
                 type="radio"
                 value="Pickup"
-                checked={deliveryType === "Pickup"}
-                onChange={(e) => setDeliveryType(e.target.value)}
+                {...register("deliveryType")}
               />
               Pickup
             </label>
-            <label>
+            <label htmlFor="deliveryType">
               <input
                 type="radio"
                 value="Delivery"
-                checked={deliveryType === "Delivery"}
-                onChange={(e) => setDeliveryType(e.target.value)}
+                {...register("deliveryType")}
               />
               Delivery
             </label>
+
             {deliveryType === "Delivery" && (
               <>
-                <input
-                  className={!address && "delivery__input--error"}
-                  type="text"
-                  placeholder={!address ? "Enter your address" : "Your address"}
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <input
-                  className={!floor && "delivery__input--error"}
-                  type="text"
-                  placeholder={!floor ? "Enter your floor" : "Your floor"}
-                  value={floor}
-                  onChange={(e) => setFloor(e.target.value)}
-                />
+                <div className="delivery__input-wrapper">
+                  <label
+                    className={`delivery__label ${
+                      errors.address && "delivery__label--error"
+                    }`}
+                  >
+                    {errors.address ? errors.address.message : "Address"}
+                  </label>
+                  <input
+                    className={`delivery__input ${
+                      errors.address ? "delivery__input--error" : ""
+                    }`}
+                    type="text"
+                    {...register("address", {
+                      required: "Address is required",
+                    })}
+                  />
+                </div>
+                <div className="delivery__input-wrapper">
+                  <label
+                    className={`delivery__label ${
+                      errors.floor && "delivery__label--error"
+                    }`}
+                  >
+                    {errors.floor ? errors.floor.message : "Floor"}
+                  </label>
+                  <input
+                    className={`delivery__input ${
+                      errors.floor ? "delivery__input--error" : ""
+                    }`}
+                    type="text"
+                    {...register("floor", {
+                      required: "Floor is required",
+                      pattern: { value: /^\d{1,3}$/, message: "Invalid floor" },
+                    })}
+                  />
+                </div>
               </>
             )}
           </div>
