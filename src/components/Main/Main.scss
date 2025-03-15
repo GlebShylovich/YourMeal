@@ -1,30 +1,74 @@
 @use "../../styles/vars" as variables;
 
 .main {
-    margin-top: 40px;
-    &__container{
-        width: 100%;
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-        column-gap: 30px;
+  margin-top: 40px;
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  &__products {
+    max-width: 990px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    &-title {
+      color: variables.$black;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.2;
     }
-    &__products{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        &-title{
-            color: variables.$black;
-            font-size: 40px;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        &-wrapper{
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 24px;
-        }
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 24px;
     }
+  }
+}
+
+@media (max-width: 1320px) {
+  .main__container {
+    gap: 20px;
+  }
+  .main__products-wrapper {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main__container {
+    gap: 20px;
+  }
+  .main__products-wrapper {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 30px;
+    &__container {
+      flex-direction: column;
+      column-gap: 0;
+    }
+  }
+  .main__products-title {
+    font-size: 28px;
+  }
+  .main__products-wrapper {
+    min-width: 100%;
+    gap: 20px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 550px) {
+  .main__products-wrapper {
+    min-width: 100%;
+    gap: 10px;
+  }
 }

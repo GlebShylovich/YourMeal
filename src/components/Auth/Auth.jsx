@@ -67,6 +67,7 @@ export default function Auth({ isRegistration, onSubmit }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder={authErrors.emailError || "Email"}
+        autocomplete="off"
         required
       />
       <input

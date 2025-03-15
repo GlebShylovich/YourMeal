@@ -5,20 +5,22 @@
   $color: variables.$white,
   $hoverBg: variables.$orange,
   $hoverColor: variables.$white,
-  $width: 100%
+  $width: 100%,
+  $height: 40px,
+  $bradius: 12px,
+  $fsize: 16px
 ) {
   min-width: $width;
-  max-width: $width;
-  height: 40px;
+  height: $height;
   display: flex;
   justify-content: center;
   align-items: center;
   background: $bg;
   font-family: variables.$family;
-  border-radius: 12px;
+  border-radius: $bradius;
   border: none;
   color: $color;
-  font-size: 16px;
+  font-size: $fsize;
   font-weight: 400;
   transition: 0.3s ease;
   outline: none;

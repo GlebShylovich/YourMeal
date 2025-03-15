@@ -11,6 +11,7 @@ import data from "../data.json";
 import Page from "./pages/Page/Page";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import "./styles/index.scss";
 
 export const GlobalContext = createContext();
 
@@ -47,17 +48,19 @@ export default function App() {
   }, [auth]);
   return (
     <GlobalContext.Provider value={paths}>
-      <Routes>
-        {data.map((item, index) => (
-          <Route
-            key={index}
-            path={item.path}
-            element={<Page data={item.items} title={item.title} />}
-          />
-        ))}
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Register />} />
-      </Routes>
+      <div className="app">
+        <Routes>
+          {data.map((item, index) => (
+            <Route
+              key={index}
+              path={item.path}
+              element={<Page data={item.items} title={item.title} />}
+            />
+          ))}
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Register />} />
+        </Routes>
+      </div>
     </GlobalContext.Provider>
   );
 }

@@ -16,6 +16,13 @@ export default function Delivery({ closeDelivery, total }) {
 
   function handleDelivery(e) {
     e.preventDefault();
+    if (
+      !username ||
+      !number ||
+      (deliveryType === "Delivery" && (!address || !floor))
+    ) {
+      return;
+    }
     dispatch(
       addOrder({
         deliveryType,
@@ -36,7 +43,12 @@ export default function Delivery({ closeDelivery, total }) {
   return (
     <div className="delivery__overlay">
       <div className="delivery">
-        <img className="delivery__close" src={close} alt="close" />
+        <img
+          className="delivery__close"
+          onClick={() => closeDelivery(false)}
+          src={close}
+          alt="close"
+        />
         <div className="delivery__image">
           <img src={donut} alt="donut" />
         </div>
@@ -44,14 +56,16 @@ export default function Delivery({ closeDelivery, total }) {
           <div className="delivery__form-body">
             <h1 className="delivery__title">{deliveryType}</h1>
             <input
+              className={!username && "delivery__input--error"}
               type="text"
-              placeholder="Your name"
+              placeholder={!username ? "Enter username" : "Your name"}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
+              className={!number && "delivery__input--error"}
               type="tel"
-              placeholder="Your number"
+              placeholder={!number ? "Enter your number" : "Your number"}
               value={number}
               onChange={(e) => setNumber(e.target.value)}
             />
@@ -76,14 +90,16 @@ export default function Delivery({ closeDelivery, total }) {
             {deliveryType === "Delivery" && (
               <>
                 <input
+                  className={!address && "delivery__input--error"}
                   type="text"
-                  placeholder="Your address"
+                  placeholder={!address ? "Enter your address" : "Your address"}
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
                 <input
+                  className={!floor && "delivery__input--error"}
                   type="text"
-                  placeholder="Your floor"
+                  placeholder={!floor ? "Enter your floor" : "Your floor"}
                   value={floor}
                   onChange={(e) => setFloor(e.target.value)}
                 />

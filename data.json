@@ -674,5 +674,169 @@
         "calories": 160
       }
     ]
+  },
+  {
+    "title": "Woks",
+    "path": "/woks",
+    "img": "/img/tab-wok.png",
+    "items": [
+      {
+        "id": 25,
+        "name": "Classic Chicken Wok",
+        "img": "/img/chickenWok.png",
+        "price": 13.99,
+        "weight": 300,
+        "ingredients": [
+          "chicken",
+          "noodles",
+          "soy sauce",
+          "bell pepper",
+          "carrot"
+        ],
+        "desc": "A flavorful stir-fried Classic Chicken Wok with tender chicken, noodles, soy sauce, fresh bell pepper, and carrot.",
+        "calories": 520
+      },
+      {
+        "id": 26,
+        "name": "Beef Teriyaki Wok",
+        "img": "/img/beefWok.png",
+        "price": 15.99,
+        "weight": 320,
+        "ingredients": [
+          "beef",
+          "rice",
+          "teriyaki sauce",
+          "broccoli",
+          "sesame seeds"
+        ],
+        "desc": "Enjoy the rich taste of Beef Teriyaki Wok, made with juicy beef, steamed rice, teriyaki sauce, fresh broccoli, and sesame seeds.",
+        "calories": 580
+      },
+      {
+        "id": 27,
+        "name": "Shrimp Pad Thai",
+        "img": "/img/shrimpWok.png",
+        "price": 16.99,
+        "weight": 310,
+        "ingredients": [
+          "shrimp",
+          "rice noodles",
+          "peanut sauce",
+          "bean sprouts",
+          "lime"
+        ],
+        "desc": "A delicious Shrimp Pad Thai with fresh shrimp, rice noodles, peanut sauce, crunchy bean sprouts, and a touch of lime.",
+        "calories": 600
+      },
+      {
+        "id": 28,
+        "name": "Vegetarian Tofu Wok",
+        "img": "/img/vegeWok.png",
+        "price": 12.99,
+        "weight": 290,
+        "ingredients": ["tofu", "rice", "soy sauce", "zucchini", "mushrooms"],
+        "desc": "A healthy Vegetarian Tofu Wok with crispy tofu, fluffy rice, soy sauce, zucchini, and mushrooms.",
+        "calories": 450
+      },
+      {
+        "id": 29,
+        "name": "Spicy Korean Wok",
+        "img": "/img/koreanWok.png",
+        "price": 14.99,
+        "weight": 330,
+        "ingredients": [
+          "spicy pork",
+          "glass noodles",
+          "gochujang sauce",
+          "kimchi",
+          "scallions"
+        ],
+        "desc": "A fiery Spicy Korean Wok featuring tender spicy pork, glass noodles, gochujang sauce, kimchi, and scallions.",
+        "calories": 620
+      },
+      {
+        "id": 30,
+        "name": "Seafood Mix Wok",
+        "img": "/img/seafoodWok.png",
+        "price": 17.99,
+        "weight": 340,
+        "ingredients": [
+          "mixed seafood",
+          "udon noodles",
+          "oyster sauce",
+          "bok choy",
+          "ginger"
+        ],
+        "desc": "A rich Seafood Mix Wok with assorted seafood, thick udon noodles, oyster sauce, fresh bok choy, and ginger.",
+        "calories": 580
+      }
+    ]
+  },
+  {
+    "title": "Drinks",
+    "path": "/drinks",
+    "img": "/img/tab-drinks.png",
+    "items": [
+      {
+        "id": 31,
+        "name": "Fresh Orange Juice",
+        "img": "/img/orangeJuice.png",
+        "price": 4.99,
+        "weight": 250,
+        "ingredients": ["fresh oranges"],
+        "desc": "A refreshing glass of Fresh Orange Juice made from ripe, hand-squeezed oranges.",
+        "calories": 120
+      },
+      {
+        "id": 32,
+        "name": "Iced Matcha Latte",
+        "img": "/img/matchaLatte.png",
+        "price": 5.99,
+        "weight": 300,
+        "ingredients": ["matcha", "milk", "ice"],
+        "desc": "A smooth and creamy Iced Matcha Latte with high-quality matcha, milk, and ice.",
+        "calories": 150
+      },
+      {
+        "id": 33,
+        "name": "Classic Lemonade",
+        "img": "/img/lemonade.png",
+        "price": 3.99,
+        "weight": 350,
+        "ingredients": ["lemon", "sugar", "water"],
+        "desc": "A classic, tangy, and refreshing Lemonade made with fresh lemons, sugar, and water.",
+        "calories": 100
+      },
+      {
+        "id": 34,
+        "name": "Mango Smoothie",
+        "img": "/img/mangoSmoothie.png",
+        "price": 6.49,
+        "weight": 330,
+        "ingredients": ["mango", "yogurt", "honey"],
+        "desc": "A delicious and creamy Mango Smoothie made with fresh mango, yogurt, and a touch of honey.",
+        "calories": 200
+      },
+      {
+        "id": 35,
+        "name": "Sparkling Berry Soda",
+        "img": "/img/berrySoda.png",
+        "price": 4.49,
+        "weight": 300,
+        "ingredients": ["mixed berries", "sparkling water", "mint"],
+        "desc": "A bubbly and fruity Sparkling Berry Soda with mixed berries, sparkling water, and a hint of mint.",
+        "calories": 80
+      },
+      {
+        "id": 36,
+        "name": "Iced Caramel Macchiato",
+        "img": "/img/caramelMacchiato.png",
+        "price": 5.99,
+        "weight": 280,
+        "ingredients": ["espresso", "milk", "caramel syrup", "ice"],
+        "desc": "A rich and sweet Iced Caramel Macchiato with bold espresso, milk, caramel syrup, and ice.",
+        "calories": 180
+      }
+    ]
   }
 ]

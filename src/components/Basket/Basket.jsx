@@ -8,6 +8,8 @@ import "./Basket.scss";
 export default function Basket() {
   const basket = useSelector((state) => state.basket.items) || [];
   const [isOpen, setIsOpen] = useState(false);
+  const [isBodyOpen, setIsBodyOpen] = useState(false);
+
   const total = useMemo(() => {
     return basket
       .reduce((sum, item) => sum + item.count * item.price, 0)
@@ -15,13 +17,13 @@ export default function Basket() {
   }, [basket]);
 
   return (
-    <div className="basket">
-      <div className="basket__top">
+    <div className={`basket ${isBodyOpen ? "basket--open" : ""}`}>
+      <div className="basket__top" onClick={() => setIsBodyOpen(!isBodyOpen)}>
         <h4 className="basket__title">Cart</h4>
         <div className="basket__amount">{basket.length}</div>
       </div>
       {basket.length > 0 ? (
-        <>
+        <div className="basket__visible">
           <div className="basket__body">
             {basket.map((item, index) => (
               <BasketItem key={index} data={item} />
@@ -46,7 +48,7 @@ export default function Basket() {
               </div>
             )}
           </div>
-        </>
+        </div>
       ) : (
         <div className="basket__body">
           <p className="basket__body-empty">Nothing here yet :(</p>

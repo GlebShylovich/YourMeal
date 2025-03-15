@@ -28,3 +28,12 @@
 .active{
     background-color: variables.$lightOrange;
 }
+
+@media(max-width: 768px){
+    .tab{
+        padding: 3px 8px;
+        &__title{
+            font-size: 12px;
+        }
+    }
+  }
