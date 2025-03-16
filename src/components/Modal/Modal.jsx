@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/reducers/basketSlice";
 import { useNotification } from "../Notification/use-notification";

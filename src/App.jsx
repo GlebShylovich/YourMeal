@@ -46,6 +46,7 @@ export default function App() {
     });
     return () => unsubscribe();
   }, [auth]);
+
   return (
     <GlobalContext.Provider value={paths}>
       <div className="app">

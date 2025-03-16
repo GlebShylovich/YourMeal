@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -15,7 +15,7 @@
   width: 684px;
   height: 432px;
   position: relative;
-  z-index: 2;
+  z-index: 101;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -25,11 +25,7 @@
   background-color: variables.$white;
   border-radius: 24px;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  &__close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    z-index: 10;
+  &__close-button {
     display: block;
     border: none;
     background: none;
@@ -52,11 +48,25 @@
   }
   &__form {
     flex-basis: 50%;
-    height: 392px;
+    height: 100%;
+    padding: 12px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    &-wrapper{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    &-top{
+      width: 100%;
+      height: max-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+    }
     &-body {
       width: 100%;
       display: flex;
@@ -136,7 +146,7 @@
   .delivery {
     width: 524px;
     height: 324px;
-    padding: 20px 16px;
+    padding: 16px;
     &__close {
       top: 13.86px;
       right: 13.86px;
@@ -146,8 +156,11 @@
     }
     &__form {
       flex-basis: 100%;
-      height: 284px;
       align-items: start;
+      padding: 0;
+      &-top{
+        padding: 0;
+      }
       &-body {
         padding: 0;
         row-gap: 3px;
@@ -184,7 +197,7 @@
   .delivery {
     width: 100%;
     height: 100%;
-    padding: 32px 10px;
+    padding: 16px;
     border-radius: 0;
     &__image {
       display: none;

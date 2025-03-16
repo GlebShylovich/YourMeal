@@ -5,6 +5,7 @@ import "./Order.scss";
 
 export default function Order({ closeOrder }) {
   const orders = useSelector((state) => state.order.items || []);
+  
   return (
     <div className="order__overlay">
       <div className="order">

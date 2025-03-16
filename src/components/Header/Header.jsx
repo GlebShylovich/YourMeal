@@ -35,55 +35,9 @@ export default function Header() {
     navigate("/login");
   }
   return (
-    <header className="header">
-      {adaptive && (
-        <div className="header__toggle">
-          <Hamburger
-            toggled={hamburger}
-            toggle={setHamburger}
-            size={24}
-            color="#FFFFFF"
-            distance="lg"
-            rounded
-          />
-        </div>
-      )}
-      <img src={background} alt="background" className="header__background" />
-      <div className="header__container">
-        {!adaptive && (
-          <div className="header__controls">
-            <img
-              onClick={() => setIsHovered((prevState) => !prevState)}
-              src={account}
-              alt="account"
-            />
-            <img onClick={logOut} src={logout} alt="logout" />
-            {isHovered && (
-              <div className="account">
-                <p>Name: {username}</p>
-                <p>Email: {email}</p>
-                <button onClick={() => setIsOpen(true)}>Order history</button>
-              </div>
-            )}
-          </div>
-        )}
-        <img src={logo} alt="your meal" className="header__logo" />
-        <section className="header__promo">
-          <img src={promo} alt="promo" className="header__promo-image" />
-          <div className="header__promo-text">
-            <h1 className="header__promo-title">
-              Only the <br />
-              <span>juiciest burgers!</span>
-            </h1>
-            <p className="header__promo-subtitle">
-              Free delivery from <span>10$</span>
-            </p>
-          </div>
-        </section>
-      </div>
-      {isOpen && <Order closeOrder={setIsOpen} />}
-      {hamburger && (
-        <div className={`hamburger ${hamburger ? "hamburger--open" : ""}`}>
+    <>
+      <header className="header">
+        {adaptive && (
           <div className="header__toggle">
             <Hamburger
               toggled={hamburger}
@@ -94,18 +48,73 @@ export default function Header() {
               rounded
             />
           </div>
-          <p
-            onClick={() => setIsHovered((prevState) => !prevState)}
-            className="hamburger__item"
-          >
-            Account
-          </p>
-          <p onClick={logOut} className="hamburger__item">
-            Logout
-          </p>
+        )}
+        <img src={background} alt="background" className="header__background" />
+        <div className="header__container">
+          {!adaptive && (
+            <div className="header__controls">
+              <img
+                onClick={() => setIsHovered((prevState) => !prevState)}
+                src={account}
+                alt="account"
+              />
+              <img onClick={logOut} src={logout} alt="logout" />
+              {isHovered && (
+                <div className="account">
+                  <p>Name: {username}</p>
+                  <p>Email: {email}</p>
+                  <button onClick={() => setIsOpen(true)}>Order history</button>
+                </div>
+              )}
+            </div>
+          )}
+          <img src={logo} alt="your meal" className="header__logo" />
+          <section className="header__promo">
+            <img src={promo} alt="promo" className="header__promo-image" />
+            <div className="header__promo-text">
+              <h1 className="header__promo-title">
+                Only the <br />
+                <span>juiciest burgers!</span>
+              </h1>
+              <p className="header__promo-subtitle">
+                Free delivery from <span>10$</span>
+              </p>
+            </div>
+          </section>
+        </div>
+        {isOpen && <Order closeOrder={setIsOpen} />}
+      </header>
+      {hamburger && (
+        <div className="burger">
+          <div className="header__toggle">
+            <Hamburger
+              toggled={hamburger}
+              toggle={setHamburger}
+              size={24}
+              color="#FFFFFF"
+              distance="lg"
+              rounded
+            />
+          </div>
+          <div className="burger__menu">
+            <img src={logo} alt="your meal" className="burger__logo" />
+            <a
+              onClick={() => setIsHovered((prevState) => !prevState)}
+              className="burger__item"
+            >
+              Account
+            </a>
+            <a onClick={logOut} className="burger__item">
+              Logout
+            </a>
+          </div>
           {isHovered && (
-            <div className="hamburger__account">
-              <img onClick={() => setIsHovered((prevState) => !prevState)} src={close} alt="close" />
+            <div className="burger__account">
+              <img
+                onClick={() => setIsHovered((prevState) => !prevState)}
+                src={close}
+                alt="close"
+              />
               <p>Name: {username}</p>
               <p>Email: {email}</p>
               <button onClick={() => setIsOpen(true)}>Order history</button>
@@ -113,6 +122,6 @@ export default function Header() {
           )}
         </div>
       )}
-    </header>
+    </>
   );
 }

@@ -14,6 +14,7 @@ export default function Delivery({ closeDelivery, total }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { showNotification, showNotificationTimeout } = useNotification();
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -24,7 +25,6 @@ export default function Delivery({ closeDelivery, total }) {
   });
 
   const onSubmitHandler = (data) => {
-    if (isSubmitting) return;
     setIsSubmitting(true);
     dispatch(
       addOrder({
@@ -33,8 +33,8 @@ export default function Delivery({ closeDelivery, total }) {
         total,
       })
     );
-    dispatch(emptyBasket());
     showNotificationTimeout();
+    dispatch(emptyBasket());
     setTimeout(() => {
       closeDelivery(false);
       setIsSubmitting(false);
@@ -44,12 +44,6 @@ export default function Delivery({ closeDelivery, total }) {
   return (
     <div className="delivery__overlay">
       <div className="delivery">
-        <img
-          className="delivery__close"
-          onClick={() => closeDelivery(false)}
-          src={close}
-          alt="close"
-        />
         <div className="delivery__image">
           <img src={donut} alt="donut" />
         </div>
@@ -57,110 +51,124 @@ export default function Delivery({ closeDelivery, total }) {
           onSubmit={handleSubmit(onSubmitHandler)}
           className="delivery__form"
         >
-          <div className="delivery__form-body">
-            <h1 className="delivery__title">{deliveryType}</h1>
-            <div className="delivery__input-wrapper">
-              <label
-                className={`delivery__label ${
-                  errors.username && "delivery__label--error"
-                }`}
+          <div className="delivery__form-wrapper">
+            <div className="delivery__form-top">
+              <h2 className="delivery__title">Delivery</h2>
+              <button
+                className="delivery__close-button"
+                onClick={() => closeDelivery(false)}
               >
-                {errors.username ? errors.username.message : "Name"}
-              </label>
-              <input
-                className={`delivery__input ${
-                  errors.username ? "delivery__input--error" : ""
-                }`}
-                type="text"
-                {...register("username", {
-                  required: "Username is required",
-                  maxLength: { value: 20, message: "Max length is 20" },
-                  minLength: { value: 3, message: "Min length is 3" },
-                })}
-              />
+                <img src={close} alt="close" />
+              </button>
             </div>
-            <div className="delivery__input-wrapper">
-              <label
-                className={`delivery__label ${
-                  errors.number && "delivery__label--error"
-                }`}
-              >
-                {errors.number ? errors.number.message : "Number"}
+            <div className="delivery__form-body">
+              <div className="delivery__input-wrapper">
+                <label
+                  className={`delivery__label ${
+                    errors.username && "delivery__label--error"
+                  }`}
+                >
+                  {errors.username ? errors.username.message : "Name"}
+                </label>
+                <input
+                  className={`delivery__input ${
+                    errors.username ? "delivery__input--error" : ""
+                  }`}
+                  type="text"
+                  {...register("username", {
+                    required: "Username is required",
+                    maxLength: { value: 20, message: "Max length is 20" },
+                    minLength: { value: 3, message: "Min length is 3" },
+                  })}
+                />
+              </div>
+              <div className="delivery__input-wrapper">
+                <label
+                  className={`delivery__label ${
+                    errors.number && "delivery__label--error"
+                  }`}
+                >
+                  {errors.number ? errors.number.message : "Number"}
+                </label>
+                <input
+                  className={`delivery__input ${
+                    errors.number ? "delivery__input--error" : ""
+                  }`}
+                  type="tel"
+                  {...register("number", {
+                    required: "Number is required",
+                    pattern: {
+                      value: /^\d{10,15}$/,
+                      message: "Invalid number",
+                    },
+                  })}
+                />
+              </div>
+              <label htmlFor="deliveryType">
+                <input
+                  type="radio"
+                  value="Pickup"
+                  {...register("deliveryType")}
+                  checked={deliveryType === "Pickup"}
+                  onChange={(e) => setDeliveryType(e.target.value)}
+                />
+                Pickup
               </label>
-              <input
-                className={`delivery__input ${
-                  errors.number ? "delivery__input--error" : ""
-                }`}
-                type="tel"
-                {...register("number", {
-                  required: "Number is required",
-                  pattern: { value: /^\d{10,15}$/, message: "Invalid number" },
-                })}
-              />
+              <label htmlFor="deliveryType">
+                <input
+                  type="radio"
+                  value="Delivery"
+                  {...register("deliveryType")}
+                  checked={deliveryType === "Delivery"}
+                  onChange={(e) => setDeliveryType(e.target.value)}
+                />
+                Delivery
+              </label>
+              {deliveryType === "Delivery" && (
+                <>
+                  <div className="delivery__input-wrapper">
+                    <label
+                      className={`delivery__label ${
+                        errors.address && "delivery__label--error"
+                      }`}
+                    >
+                      {errors.address ? errors.address.message : "Address"}
+                    </label>
+                    <input
+                      className={`delivery__input ${
+                        errors.address ? "delivery__input--error" : ""
+                      }`}
+                      type="text"
+                      {...register("address", {
+                        required: "Address is required",
+                      })}
+                    />
+                  </div>
+                  <div className="delivery__input-wrapper">
+                    <label
+                      className={`delivery__label ${
+                        errors.floor && "delivery__label--error"
+                      }`}
+                    >
+                      {errors.floor ? errors.floor.message : "Floor"}
+                    </label>
+                    <input
+                      className={`delivery__input ${
+                        errors.floor ? "delivery__input--error" : ""
+                      }`}
+                      type="text"
+                      {...register("floor", {
+                        required: "Floor is required",
+                        pattern: {
+                          value: /^\d{1,3}$/,
+                          message: "Invalid floor",
+                        },
+                      })}
+                    />
+                  </div>
+                </>
+              )}
             </div>
-
-            <label htmlFor="deliveryType">
-              <input
-                type="radio"
-                value="Pickup"
-                {...register("deliveryType")}
-                checked={deliveryType === "Pickup"}
-                onChange={(e) => setDeliveryType(e.target.value)}
-              />
-              Pickup
-            </label>
-            <label  htmlFor="deliveryType">
-              <input
-                type="radio"
-                value="Delivery"
-                {...register("deliveryType")}
-                checked={deliveryType === "Delivery"}
-                onChange={(e) => setDeliveryType(e.target.value)}
-              />
-              Delivery
-            </label>
-
-            {deliveryType === "Delivery" && (
-              <>
-                <div className="delivery__input-wrapper">
-                  <label
-                    className={`delivery__label ${
-                      errors.address && "delivery__label--error"
-                    }`}
-                  >
-                    {errors.address ? errors.address.message : "Address"}
-                  </label>
-                  <input
-                    className={`delivery__input ${
-                      errors.address ? "delivery__input--error" : ""
-                    }`}
-                    type="text"
-                    {...register("address", {
-                      required: "Address is required",
-                    })}
-                  />
-                </div>
-                <div className="delivery__input-wrapper">
-                  <label
-                    className={`delivery__label ${
-                      errors.floor && "delivery__label--error"
-                    }`}
-                  >
-                    {errors.floor ? errors.floor.message : "Floor"}
-                  </label>
-                  <input
-                    className={`delivery__input ${
-                      errors.floor ? "delivery__input--error" : ""
-                    }`}
-                    type="text"
-                    {...register("floor", {
-                      required: "Floor is required",
-                      pattern: { value: /^\d{1,3}$/, message: "Invalid floor" },
-                    })}
-                  />
-                </div>
-              </>
-            )}
           </div>
           <button
             type="submit"
