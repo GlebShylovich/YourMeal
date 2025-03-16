@@ -1,12 +1,18 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { emptyBasket } from "../../redux/reducers/basketSlice";
 import { addOrder } from "../../redux/reducers/orderSlice";
+import { useNotification } from "../Notification/use-notification";
+import Notification from "../Notification/Notification";
 import donut from "/img/pic.png";
 import close from "/close.svg";
 import "./Delivery.scss";
 
 export default function Delivery({ closeDelivery, total }) {
+  const [deliveryType, setDeliveryType] = useState("Delivery");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { showNotification, showNotificationTimeout } = useNotification();
   const dispatch = useDispatch();
   const {
     register,
@@ -17,9 +23,9 @@ export default function Delivery({ closeDelivery, total }) {
     mode: "onSubmit",
   });
 
-  const deliveryType = watch("deliveryType", "Delivery");
-
   const onSubmitHandler = (data) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     dispatch(
       addOrder({
         ...data,
@@ -28,7 +34,11 @@ export default function Delivery({ closeDelivery, total }) {
       })
     );
     dispatch(emptyBasket());
-    setTimeout(() => closeDelivery(false), 2000);
+    showNotificationTimeout();
+    setTimeout(() => {
+      closeDelivery(false);
+      setIsSubmitting(false);
+    }, 2000);
   };
 
   return (
@@ -94,14 +104,18 @@ export default function Delivery({ closeDelivery, total }) {
                 type="radio"
                 value="Pickup"
                 {...register("deliveryType")}
+                checked={deliveryType === "Pickup"}
+                onChange={(e) => setDeliveryType(e.target.value)}
               />
               Pickup
             </label>
-            <label htmlFor="deliveryType">
+            <label  htmlFor="deliveryType">
               <input
                 type="radio"
                 value="Delivery"
                 {...register("deliveryType")}
+                checked={deliveryType === "Delivery"}
+                onChange={(e) => setDeliveryType(e.target.value)}
               />
               Delivery
             </label>
@@ -148,11 +162,16 @@ export default function Delivery({ closeDelivery, total }) {
               </>
             )}
           </div>
-          <button type="submit" className="delivery__button">
+          <button
+            type="submit"
+            className="delivery__button"
+            disabled={isSubmitting}
+          >
             Submit
           </button>
         </form>
       </div>
+      {showNotification && <Notification title={"Successful 🎉"} />}
     </div>
   );
 }

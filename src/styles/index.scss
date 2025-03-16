@@ -31,9 +31,3 @@ body {
     max-width: 670px;
   }
 }
-
-@media (max-width: 400px) {
-  [class*="__container"] {
-    max-width: 330px;
-  }
-}

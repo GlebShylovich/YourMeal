@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/reducers/basketSlice";
+import { useNotification } from "../Notification/use-notification";
+import Notification from "../Notification/Notification";
 import close from "/close.svg";
 import "./Modal.scss";
 
@@ -8,12 +10,14 @@ export default function Modal({ data, closeModal }) {
   const { name, img, desc, ingredients, weight, calories, price } = data;
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
+  const { showNotification, showNotificationTimeout } = useNotification();
 
   function handleClick() {
     dispatch(addItem({ ...data, count }));
+    showNotificationTimeout();
     setTimeout(() => {
       closeModal(false);
-    }, 2000)
+    }, 2000);
   }
 
   return (
@@ -63,6 +67,7 @@ export default function Modal({ data, closeModal }) {
           </div>
         </div>
       </div>
+      {showNotification && <Notification title={"Added to cart 🎉"} />}
     </div>
   );
 }

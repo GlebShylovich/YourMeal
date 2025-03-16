@@ -51,7 +51,7 @@
   .card {
     width: calc(33.33% - 20px);
     &__image {
-      max-height: 220px;
+      height: auto;
     }
   }
 }
@@ -59,19 +59,15 @@
 @media (max-width: 1024px) {
   .card {
     width: calc(50% - 10px);
-    &__image {
-      max-height: 220px;
-    }
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    width: 145px;
+    width: calc(25% - 15px);
     padding: 4px;
     border-radius: 12px;
     &__image {
-      height: 120px;
       border-radius: 8px;
     }
     &__price {
@@ -104,17 +100,11 @@
 @media (max-width: 670px) {
   .card {
     width: calc(33.33% - 14px);
-    &__image {
-      max-height: 120px;
-    }
   }
 }
 
 @media (max-width: 550px) {
   .card {
     width: calc(50% - 5px);
-    &__image {
-      max-height: 120px;
-    }
   }
 }

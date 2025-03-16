@@ -1,0 +1,26 @@
+@use "../../styles/vars" as variables;
+.notification {
+  border-radius: 18px;
+  padding: 12px;
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: slideDown 4s forwards;
+  background: variables.$white;
+  z-index: 100;
+}
+@keyframes slideDown {
+  0% {
+    top: -100px;
+  }
+  25% {
+    top: 20px;
+  }
+  75% {
+    top: 20px;
+  }
+  100% {
+    top: -100px;
+  }
+}

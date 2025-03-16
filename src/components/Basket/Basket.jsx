@@ -50,8 +50,10 @@ export default function Basket() {
           </div>
         </div>
       ) : (
-        <div className="basket__body">
-          <p className="basket__body-empty">Nothing here yet :(</p>
+        <div className="basket__visible">
+          <div className="basket__body">
+            <p className="basket__body-empty">Nothing here yet :(</p>
+          </div>
         </div>
       )}
       {isOpen && <Delivery closeDelivery={setIsOpen} total={total} />}
