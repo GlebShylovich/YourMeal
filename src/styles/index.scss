@@ -28,6 +28,6 @@ body {
 
 @media (max-width: 768px) {
   [class*="__container"] {
-    max-width: 670px;
+    max-width: none;
   }
 }
